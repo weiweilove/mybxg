@@ -4,9 +4,12 @@ requirejs.config({
     paths : {// 给模块路径起一个别名
         jquery : 'jquery/jquery.min',
         bootstrap : 'bootstrap/js/bootstrap.min',
+        template : 'artTemplate/template-web',
         cookie : 'jquery-cookie/jquery.cookie',
         common : '../js/common',
-        login : '../js/login'
+        login : '../js/login',
+        profile : '../js/profile'
+
     },
     shim : {// 兼容非标准模块
         bootstrap : {

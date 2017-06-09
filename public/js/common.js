@@ -1,4 +1,4 @@
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
 	$('.navs ul').prev('a').on('click', function () {
 		$(this).next().slideToggle();
 	});
@@ -12,7 +12,7 @@ define(['jquery','cookie'],function($){
                 success : function(data){
                   //退出登录之后，清空cookie
                 $.removeCookie('loginInfo',{path:'/'});
-                console.log(loginInfo);
+                
                    location.href = '/login';
                    
                 }
@@ -28,14 +28,16 @@ define(['jquery','cookie'],function($){
      }
 
      //获取登录的用户信息
-     var loginInfo = $.cookie('loginInfo') && JSON.parse($.cookie('loginInfo'));
+     var Info = $.cookie('loginInfo') && JSON.parse($.cookie('loginInfo'));
      //如果存在用户的登录信息，此时应该渲染页面
-     if(loginInfo){
-     	$('.profile > div').find('img').attr('src',loginInfo.tc_avatar);
-     	$('.profile>h4').text(loginInfo.tc_name);
+     if(Info){
+         var loginTpl = '<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
+         var html = template.render(loginTpl,Info);
+         $("#profile").html(html);
+
+     	/*$('.profile > div').find('img').attr('src',loginInfo.tc_avatar);
+     	$('.profile>h4').text(loginInfo.tc_name);*/
      }
-
-
 
 });
 	
