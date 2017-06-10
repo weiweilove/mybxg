@@ -6,9 +6,12 @@ requirejs.config({
         bootstrap : 'bootstrap/js/bootstrap.min',
         template : 'artTemplate/template-web',
         cookie : 'jquery-cookie/jquery.cookie',
+        nprogress : 'nprogress/nprogress',
         common : '../js/common',
+        index : '../js/index',
+        util : '../js/util',
         login : '../js/login',
-        profile : '../js/profile'
+        teacherList : '../js/teacher_list'
 
     },
     shim : {// 兼容非标准模块

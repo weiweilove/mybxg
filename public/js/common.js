@@ -1,4 +1,4 @@
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','nprogress','cookie'],function($,template,nprogress){
 	$('.navs ul').prev('a').on('click', function () {
 		$(this).next().slideToggle();
 	});
@@ -38,6 +38,24 @@ define(['jquery','template','cookie'],function($,template){
      	/*$('.profile > div').find('img').attr('src',loginInfo.tc_avatar);
      	$('.profile>h4').text(loginInfo.tc_name);*/
      }
+
+      //遮罩层处理
+     $(document).ajaxStart(function(){
+     	 $('.overlay').show();
+     });
+     $(document).ajaxStop(function(){  	
+     	 setTimeout(function(){
+                $('.overlay').hide();
+     	 },500)
+     });
+     	
+    
+
+
+     //进度条
+     nprogress.start();
+     nprogress.done();
+
 
 });
 	
