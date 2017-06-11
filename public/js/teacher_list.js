@@ -1,5 +1,5 @@
 define(['jquery','template','util','bootstrap'],function($,template,util){
-	  //导航菜单选中：
+    //导航菜单选中：
     util.setMenu(location.pathname);
 
   $.ajax({
@@ -7,6 +7,7 @@ define(['jquery','template','util','bootstrap'],function($,template,util){
 		url : '/api/teacher',
 		dataType : 'json',
 		success : function(data){
+
 	   var html = template('teacherInfoTpl',{list: data.result});
 			$("#teacherInfo").html(html);
 			//查看讲师功能

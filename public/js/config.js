@@ -8,8 +8,8 @@ requirejs.config({
         cookie : 'jquery-cookie/jquery.cookie',
         nprogress : 'nprogress/nprogress',
         common : '../js/common',
-        index : '../js/index',
         util : '../js/util',
+        index : '../js/index',
         login : '../js/login',
         teacherList : '../js/teacher_list'
 
