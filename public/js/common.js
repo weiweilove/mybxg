@@ -43,10 +43,8 @@ define(['jquery','template','nprogress','cookie'],function($,template,nprogress)
      $(document).ajaxStart(function(){
      	 $('.overlay').show();
      });
-     $(document).ajaxStop(function(){  	
-     	 setTimeout(function(){
-                $('.overlay').hide();
-     	 },500)
+     $(document).ajaxStop(function(){  		 
+        $('.overlay').hide();
      });
      	
     

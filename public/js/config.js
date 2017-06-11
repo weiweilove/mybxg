@@ -11,7 +11,8 @@ requirejs.config({
         util : '../js/util',
         index : '../js/index',
         login : '../js/login',
-        teacherList : '../js/teacher_list'
+        teacherList : '../js/teacher_list',
+        teacherAdd : '../js/teacher_add'
 
     },
     shim : {// 兼容非标准模块
