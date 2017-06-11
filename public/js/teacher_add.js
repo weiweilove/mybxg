@@ -1,19 +1,23 @@
 define(['jquery','util','template'],function($,util,template){
 	util.setMenu('/teacher/teacher_list');
-    //添加讲师处理
-    $("#teacherAddBtn").click(function(){
-    	$.ajax({
-    		url : '/api/teacher/add',
-    		type : 'post',
-    		data : $('#teacherAddForm').serialize(),
-    		dataType: 'json',
-    		success : function(data){
-                console.log(data);
-    		}
-    	});
-    });
-   
     var tcId = util.qs('tc_id',location.search);
+
+      function submitForm(url){
+             //添加讲师处理
+         $("#teacherAddBtn").click(function(){
+            alert(1);
+             $.ajax({
+               url : url,
+              type : 'post',
+              data : $('#teacherAddForm').serialize(),
+              dataType: 'json',
+              success : function(data){
+                console.log(data);
+              }
+            });
+         });
+      } 
+    
      if(tcId){
      	 //编辑讲师列表部分
      	$.ajax({
@@ -26,6 +30,8 @@ define(['jquery','util','template'],function($,util,template){
      			data.result.operateFlag = "编辑";
      			var html = template('teacherAddTpl',data.result);
      			$("#teacherAddInfo").html(html);
+                //提交编辑过的表单
+              submitForm('/api/teacher/update');
      		}
 
      	});
@@ -33,8 +39,10 @@ define(['jquery','util','template'],function($,util,template){
      }else{
         //添加讲师操作
          $("#navFlag").text("讲师添加");
-         var html = template('teacherAddTpl',{operateFlag : '添加'});
+         var html = template('teacherAddTpl',{operateFlag : '添加',tc_gender : 1});
          $("#teacherAddInfo").html(html);
+         //添加讲师
+        submitForm('/api/teacher/add');
      }
 
 
